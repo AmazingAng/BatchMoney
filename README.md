@@ -59,6 +59,15 @@ forge build
 forge test
 ```
 
+## Disclamer
+
+These contracts are **unaudited** and are not recommended for use in production.
+
+The contract is **experimental software** and is provided on an "as is" and "as available" basis.
+
+We **do not give any warranties** and **will not be liable for any loss** incurred through any use of this codebase and product.
+
+
 ## Reference
 
 1. [disperse research](https://github.com/banteg/disperse-research)
