@@ -8,7 +8,7 @@ Efficiently transfer ether or tokens to many addresses in batch, powered by [Huf
 
 2. Support non-standard ERC20 (i.e. [USDT](https://etherscan.io/address/0xdac17f958d2ee523a2206206994597c13d831ec7#code)).
 
-## Transfer ERC20 to 100 addresses (Tested on Goerli)
+## Test: Transfer ERC20 to 100 addresses on Goerli
 
 To test the gas consumption fairly, we created a new tokens for different methods. For normal transfer, we record the gas used by transfering token to 1 address, and then multiply it by 100.
 
