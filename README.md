@@ -10,8 +10,16 @@ Efficiently transfer ether or tokens to many addresses in batch, powered by [Huf
 
 2. Support non-standard ERC20 (i.e. [USDT](https://etherscan.io/address/0xdac17f958d2ee523a2206206994597c13d831ec7#code)).
 
-## Test Results
+## Supported Networks
 
+website: [batch.money](https://batch.money)
+
+| Network      | Contract address                                                                                                                                                     |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Goerli       | [0xDC7a1993196d63db926c3B2e1C42682f39885B96](https://goerli.etherscan.io/address/0xdc7a1993196d63db926c3b2e1c42682f39885b96)                                               |
+
+
+## Test Results
 
 ### Transfer ERC20 to 100 addresses on Goerli
 
