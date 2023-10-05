@@ -1,0 +1,170 @@
+/* Interface */
+#define function batchTransferERC20(address token, uint256 total, address[] recipients, uint256[] amounts) nonpayable returns ()
+#define function batchTransferETH(address[] recipients, uint256[] amounts) payable returns ()
+#define function transfer(address,uint256) nonpayable returns (bool)
+#define function transferFrom(address,address,uint256) nonpayable returns ()
+
+/* Method */
+#define macro BATCH_TRANSFER_ERC20() = takes (0) returns (0) {
+    // calldata:
+    // 0x00: sig | 0x04: token | 0x24: total | 0x44: recipients[] | 0x64: amounts[]
+    
+    // 1. safeTransfer total amount of token from sender to this contract
+    0x04 calldataload   // [token]
+    0x24 calldataload   // [total, token]
+    address             // [this, total, token]
+    // store args in memory
+    __FUNC_SIG(transferFrom) 0x00 mstore // [this, total, token] memory: [0x00: sig]
+    caller 0x20 mstore               // [this, total, token] memory: [0x00: sig, 0x20: sender, 0x40: this]
+    dup1 0x40 mstore                 // [this, total, token] memory: [0x00: sig, 0x20: sender, 0x40: this]
+    dup2 0x60 mstore                 // [this, total, token] memory: [0x00: sig, 0x20: sender, 0x40: this, 0x60: total]
+    // call transferFrom
+    // return size is 0x20, return offset is 0x60
+    // arg size is 0x64, arg offset if 0x1c (where sig start)
+    0x20                        // [ret_size, this, total, token]
+    0x60                        // [ret_offset, ret_size, this, total, token]
+    0x64                        // [args_size, ret_offset, ret_size, this, total, token]
+    0x1c                        // [args_offset, args_size, ret_offset, ret_size, this, total, token]
+    0x00                        // [value, args_offset, args_size, ret_offset, ret_size, this, total, token]
+    dup8                        // [to, value, args_offset, args_size, ret_offset, ret_size, this, total, token]
+    gas                         // [gas, to, value, args_offset, args_size, ret_offset, ret_size, this, total, token]
+    call                        // [success, this, total, token]
+    // safeTransferFrom ERC20 token
+    returndatasize iszero       // [returndatasize == 0, success, this, total, token]
+    0x60                        // [ret_offset, returndatasize == 0, success, this, total, token]
+    mload                       // [ret_data, returndatasize == 0, success, this, total, token]
+    0x01 eq                     // [ret_data == true, returndatasize == 0, success]
+    or                          // [ret_data == true | returndatasize == 0, success, this, total, token]
+    and                         // [success & (data == 0x01 | returndatasize == 0), this, total, token]
+    transferFrom_success jumpi      // [this, total, token]
+    // revert if call failed
+    0x00 dup1 revert            // 
+    // transferFrom sucess
+    transferFrom_success:           // [this, total, token]
+
+    // 2. batch transfer from this contract to recipients in a loop
+    // read recipients[] offset and length
+    0x44 calldataload 0x04 add  // [rcp_offset, this, total, token]
+    dup1 calldataload           // [rcp_len, rcp_offset, this, total, token]
+    // read amounts[] offset and length
+    0x64 calldataload 0x04 add  // [amt_offset, rcp_len, rcp_offset, this, total, token]
+    dup1 calldataload           // [amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+    // check if length are equal
+    dup3 dup2 eq                // [amt_len==rcp_len?, amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+    arr_len_success jumpi       // [amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+    // revert if call failed
+    0x00 dup1 revert    
+    // if amt_len==rcp_len     
+    arr_len_success: 
+    0x01                        // [index(1), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+    // store transfer sig in memory
+    __FUNC_SIG(transfer) 0x00 mstore // memory: [0x00: sig]
+
+    // 循环
+    loop: 
+        // chech (index>len), if true, jump to end.
+        dup2 dup2 gt end jumpi  // [index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        // read recipients[i-1], store to memory 0x20
+        dup5 dup2 0x20 mul add calldataload 0x20 mstore // [index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        // read amounts[i-1], store to memory 0x40
+        dup3 dup2 0x20 mul add calldataload 0x40 mstore // [index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+
+        // call transfer
+        // return size is 0x20, return offset is 0x60
+        // arg size is 0x64, arg offset if 0x1c (where sig start)
+        0x20                        // [ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        0x60                        // [ret_offset, ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        0x44                        // [args_size, ret_offset, ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        0x1c                        // [args_offset, args_size, ret_offset, ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        0x00                        // [value, args_offset, args_size, ret_offset, ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        dup13                       // [to, value, args_offset, args_size, ret_offset, ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        gas                         // [gas, to, value, args_offset, args_size, ret_offset, ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        call                        // [success, index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+
+        // safeTransfer ERC20 token
+        returndatasize iszero       // [returndatasize == 0, success, index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        0x60                        // [ret_offset, returndatasize == 0, success, index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        mload                       // [ret_data, returndatasize == 0, success, index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        0x01 eq                     // [ret_data == true, returndatasize == 0, successindex(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        or                          // [ret_data == true | returndatasize == 0, success, index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        and                         // [success & (data == 0x01 | returndatasize == 0), index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        transfer_success jumpi      // [index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        // revert if call failed
+        0x00 dup1 revert            // 
+        // transferF sucess
+        transfer_success:           // [index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        // update i
+        0x01 add                    // [index(i+1), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
+        // continue loop
+        loop jump
+
+    // end of the loop, stop
+    end:
+        stop
+}
+
+#define macro BATCH_TRANSFER_ETH() = takes (0) returns (0) {
+    // calldata:
+    // 0x00: sig | 0x04: recipients[] | 0x24: amounts[]
+    
+    // 1. batch transfer ETH from this contract to recipients in a loop
+    // read recipients[] offset and length
+    0x04 calldataload 0x04 add  // [rcp_offset]
+    dup1 calldataload           // [rcp_len, rcp_offset]
+    // read amounts[] offset and length
+    0x24 calldataload 0x04 add  // [amt_offset, rcp_len, rcp_offset]
+    dup1 calldataload           // [amt_len, amt_offset, rcp_len, rcp_offset]
+    // check if length are equal
+    dup3 dup2 eq                // [amt_len==rcp_len?, amt_len, amt_offset, rcp_len, rcp_offset]
+    arr_len_success jumpi       // [amt_len, amt_offset, rcp_len, rcp_offset]
+    // revert if call failed
+    0x00 dup1 revert    
+    // if amt_len==rcp_len     
+    arr_len_success: 
+    0x01                        // [index(1), amt_len, amt_offset, rcp_len, rcp_offset]
+
+    // loop
+    loop: 
+        // chech (index>len), if true, jump to end.
+        dup2 dup2 gt end jumpi  // [index(i), amt_len, amt_offset, rcp_len, rcp_offset]
+
+        // call transfer
+        0x00                        // [ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset]
+        dup1                        // [ret_offset, ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset]
+        dup1                        // [args_size, ret_offset, ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset]
+        dup1                        // [args_offset, args_size, ret_offset, ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset]
+        dup7 dup6 0x20 mul add calldataload // [value, args_offset, args_size, ret_offset, ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset]
+        dup10 dup7 0x20 mul add calldataload // [to, value, args_offset, args_size, ret_offset, ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset]
+        gas                         // [gas, to, value, args_offset, args_size, ret_offset, ret_size, index(i), amt_len, amt_offset, rcp_len, rcp_offset]
+        call                        // [success, index(i), amt_len, amt_offset, rcp_len, rcp_offset]
+
+        // safeTransfer ERC20 token
+        transfer_success jumpi      // [index(i), amt_len, amt_offset, rcp_len, rcp_offset]
+        // revert if call failed
+        0x00 dup1 revert            // 
+        // transferF sucess
+        transfer_success:           // [index(i), amt_len, amt_offset, rcp_len, rcp_offset]
+        // update i
+        0x01 add                    // [index(i+1), amt_len, amt_offset, rcp_len, rcp_offset]
+        // continue loop
+        loop jump
+
+    // end of the loop, stop
+    end:
+        stop
+}
+
+#define macro MAIN() = takes (0) returns (0) {
+    // 通过selector判断要调用哪个函数
+    0x00 calldataload 0xE0 shr
+    dup1 __FUNC_SIG(batchTransferERC20) eq batch_transfer_erc20 jumpi
+    dup1 __FUNC_SIG(batchTransferETH) eq batch_transfer_eth jumpi
+
+    // 如果没有匹配的函数，就revert
+    0x00 0x00 revert
+
+    batch_transfer_erc20:
+        BATCH_TRANSFER_ERC20()
+    batch_transfer_eth:
+        BATCH_TRANSFER_ETH()
+}
