@@ -1,3 +1,4 @@
+// Batch Transfer v1
 /* Interface */
 #define function batchTransferERC20(address token, uint256 total, address[] recipients, uint256[] amounts) nonpayable returns ()
 #define function batchTransferETH(address[] recipients, uint256[] amounts) payable returns ()
