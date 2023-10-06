@@ -10,6 +10,8 @@ Efficiently transfer ether or tokens to many addresses in batch, powered by [Huf
 
 2. Support non-standard ERC20 (i.e. [USDT](https://etherscan.io/address/0xdac17f958d2ee523a2206206994597c13d831ec7#code)).
 
+3. Small contract size, saves ~80% gas on deployment.
+
 ## Supported Networks
 
 website: [batch.money](https://batch.money)
