@@ -60,7 +60,7 @@
     // store transfer sig in memory
     __FUNC_SIG(transfer) 0x00 mstore // memory: [0x00: sig]
 
-    // 循环
+    // Loop
     loop: 
         // chech (index>len), if true, jump to end.
         dup2 dup2 gt end jumpi  // [index(i), amt_len, amt_offset, rcp_len, rcp_offset, this, total, token]
@@ -155,12 +155,12 @@
 }
 
 #define macro MAIN() = takes (0) returns (0) {
-    // 通过selector判断要调用哪个函数
+    // call function according to the selector 
     0x00 calldataload 0xE0 shr
     dup1 __FUNC_SIG(batchTransferERC20) eq batch_transfer_erc20 jumpi
     dup1 __FUNC_SIG(batchTransferETH) eq batch_transfer_eth jumpi
 
-    // 如果没有匹配的函数，就revert
+    // if no matched function, revert
     0x00 0x00 revert
 
     batch_transfer_erc20:
