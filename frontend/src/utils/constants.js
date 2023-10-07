@@ -27,7 +27,7 @@ export const supportedChains = [
     chainId: 100,
     batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
     blockExplorer: "https://gnosis.blockscout.com/",
-    name: "xdai",
+    name: "gnosis",
   },
   {
     chainId: 137,
