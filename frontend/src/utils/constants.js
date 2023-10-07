@@ -42,6 +42,12 @@ export const supportedChains = [
     name: "pgn",
   },
   {
+    chainId: 1101,
+    batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
+    blockExplorer: "https://zkevm.polygonscan.com/",
+    name: "polygon zkevm",
+  },
+  {
     chainId: 8453,
     batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
     blockExplorer: "https://basescan.org/",
