@@ -18,9 +18,63 @@ export const supportedChains = [
     name: "optimism",
   },
   {
+    chainId: 56,
+    batchTransferAddress: "0x0D69079B60484ae97EA7DEaad370B61f9Da401F8",
+    blockExplorer: "https://bscscan.com/",
+    name: "bnb chain",
+  },
+  {
+    chainId: 100,
+    batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
+    blockExplorer: "https://gnosis.blockscout.com/",
+    name: "xdai",
+  },
+  {
+    chainId: 137,
+    batchTransferAddress: "0x927ec65329636525a5B00103De1c00d8Da9b08aD",
+    blockExplorer: "https://polygonscan.com/",
+    name: "polygon",
+  },
+  {
+    chainId: 424,
+    batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
+    blockExplorer: "https://explorer.publicgoods.network/",
+    name: "pgn",
+  },
+  {
+    chainId: 8453,
+    batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
+    blockExplorer: "https://basescan.org/",
+    name: "base",
+  },
+  {
     chainId: 17000,
     batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
     blockExplorer: "https://holesky.etherscan.io/",
     name: "holesky",
+  },
+  {
+    chainId: 42161,
+    batchTransferAddress: "0x63d9C12865336322Ca981E5d1392acde4fAdD3Dc",
+    blockExplorer: "https://arbiscan.io/",
+    name: "arbitrum one",
+  },
+  {
+    chainId: 59144,
+    batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
+    blockExplorer: "https://lineascan.build/",
+    name: "linea",
+  },
+  {
+    chainId: 534351,
+    batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
+    blockExplorer: "https://sepolia-blockscout.scroll.io/",
+    name: "scroll sepolia",
+  },
+  {
+    chainId: 11155111,
+    batchTransferAddress: "0x1726348d59697D19Ce307E662da6a631381dB8dD",
+    blockExplorer: "https://sepolia.etherscan.io/",
+    name: "sepolia",
   },
 ];
