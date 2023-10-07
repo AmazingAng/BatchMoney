@@ -39,7 +39,7 @@ export const supportedChains = [
     chainId: 424,
     batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
     blockExplorer: "https://explorer.publicgoods.network/",
-    name: "pgn",
+    name: "public goods network",
   },
   {
     chainId: 1101,
