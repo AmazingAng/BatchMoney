@@ -11,4 +11,16 @@ export const supportedChains = [
     blockExplorer: "https://goerli.etherscan.io/",
     name: "goerli",
   },
+  {
+    chainId: 10,
+    batchTransferAddress: "0x3484593c456D9C598C47754341718062318066Ba",
+    blockExplorer: "https://optimistic.etherscan.io/",
+    name: "optimism",
+  },
+  {
+    chainId: 17000,
+    batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
+    blockExplorer: "https://holesky.etherscan.io/",
+    name: "holesky",
+  },
 ];
