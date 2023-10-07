@@ -36,6 +36,12 @@ export const supportedChains = [
     name: "polygon",
   },
   {
+    chainId: 204,
+    batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
+    blockExplorer: "https://opbnbscan.com/",
+    name: "opbnb",
+  },
+  {
     chainId: 424,
     batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
     blockExplorer: "https://explorer.publicgoods.network/",
