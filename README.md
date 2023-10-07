@@ -19,7 +19,20 @@ website: [batch.money](https://batch.money)
 | Network      | Contract address                                                                                                                                                     |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ETH       | [0xD35a289c1D5F6f6a604d6026111109694e51BA25](https://etherscan.io/address/0xD35a289c1D5F6f6a604d6026111109694e51BA25)                                               |
+| Optimism       | [0x3484593c456D9C598C47754341718062318066Ba](https://optimistic.etherscan.io/address/0x3484593c456D9C598C47754341718062318066Ba)                                               |
+| Base       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://basescan.org/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
+| Arbitrum One       | [0x63d9C12865336322Ca981E5d1392acde4fAdD3Dc](https://arbiscan.io/address/0x63d9C12865336322Ca981E5d1392acde4fAdD3Dc)                                               |
+| Linea       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://lineascan.build/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
+| BNB Chain       | [0x0D69079B60484ae97EA7DEaad370B61f9Da401F8](https://bscscan.com/address/0x0D69079B60484ae97EA7DEaad370B61f9Da401F8)                                               |
+| opBNB Chain       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://opbnbscan.com/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
+| Polygon       | [0x927ec65329636525a5B00103De1c00d8Da9b08aD](https://polygonscan.com/address/0x927ec65329636525a5B00103De1c00d8Da9b08aD)                                               |
+| Polygon zkevm      | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://zkevm.polygonscan.com/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
+| Public Goods Network       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://explorer.publicgoods.network/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
+| Gnosis Chain       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://gnosis.blockscout.com/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
 | Goerli       | [0xDC7a1993196d63db926c3B2e1C42682f39885B96](https://goerli.etherscan.io/address/0xdc7a1993196d63db926c3b2e1c42682f39885b96)                                               |
+| Holesky       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://holesky.etherscan.io/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
+| Sepolia       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://sepolia.etherscan.io/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
+| Scroll Sepolia       | [0x1726348d59697D19Ce307E662da6a631381dB8dD](https://sepolia-blockscout.scroll.io/address/0x1726348d59697D19Ce307E662da6a631381dB8dD)                                               |
 
 ## Test Results
 
