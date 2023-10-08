@@ -90,7 +90,7 @@ function App() {
     }
   }, []);
   return (
-    <div className="mx-48 px-48 pt-28">
+    <div className="pt-28mx-8 sm:mx-12 md:mx-24 lg:mx-48 px-8 sm:px-12 md:px-24 lg:px-48 pt-28">
       <NetworkContext.Provider
         value={{
           chainId: state.chainId,
