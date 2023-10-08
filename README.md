@@ -31,7 +31,7 @@ website: [batch.money](https://batch.money)
 | Gnosis Chain       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://gnosis.blockscout.com/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
 | Goerli       | [0xDC7a1993196d63db926c3B2e1C42682f39885B96](https://goerli.etherscan.io/address/0xdc7a1993196d63db926c3b2e1c42682f39885b96)                                               |
 | Holesky       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://holesky.etherscan.io/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
-| Sepolia       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://sepolia.etherscan.io/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
+| Sepolia       | [0x800A2bE9B6259E252eDE4a5a041C23ab994F2962](https://sepolia.etherscan.io/address/0x800A2bE9B6259E252eDE4a5a041C23ab994F2962)                                               |
 | Scroll Sepolia       | [0x1726348d59697D19Ce307E662da6a631381dB8dD](https://sepolia-blockscout.scroll.io/address/0x1726348d59697D19Ce307E662da6a631381dB8dD)                                               |
 
 ## Test Results

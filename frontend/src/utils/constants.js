@@ -85,7 +85,7 @@ export const supportedChains = [
   },
   {
     chainId: 11155111,
-    batchTransferAddress: "0x1726348d59697D19Ce307E662da6a631381dB8dD",
+    batchTransferAddress: "0x800A2bE9B6259E252eDE4a5a041C23ab994F2962",
     blockExplorer: "https://sepolia.etherscan.io/",
     name: "sepolia",
   },
