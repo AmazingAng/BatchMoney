@@ -2,7 +2,7 @@
 
 # Batch.Money
 
-Efficiently transfer ether or tokens to many addresses in batch, powered by [Huff](https://github.com/huff-language/huff-rs) and [WTF Academy](https://wtf.academy).
+Efficiently transfer ether or tokens to many addresses in batch, powered by [Huff](https://github.com/huff-language/huff-rs) and [WTF Academy](https://wtf.academy), supporting 15 chains!
 
 ## Key Features
 
