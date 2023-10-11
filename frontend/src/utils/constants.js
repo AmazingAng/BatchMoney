@@ -84,9 +84,17 @@ export const supportedChains = [
     name: "scroll sepolia",
   },
   {
+    chainId: 534352,
+    batchTransferAddress: "0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d",
+    blockExplorer: "https://blockscout.scroll.io/",
+    name: "scroll",
+  },
+  {
     chainId: 11155111,
     batchTransferAddress: "0x800A2bE9B6259E252eDE4a5a041C23ab994F2962",
     blockExplorer: "https://sepolia.etherscan.io/",
     name: "sepolia",
   },
 ];
+
+0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d

@@ -20,6 +20,7 @@ website: [batch.money](https://batch.money)
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ETH       | [0xD35a289c1D5F6f6a604d6026111109694e51BA25](https://etherscan.io/address/0xD35a289c1D5F6f6a604d6026111109694e51BA25)                                               |
 | Optimism       | [0x3484593c456D9C598C47754341718062318066Ba](https://optimistic.etherscan.io/address/0x3484593c456D9C598C47754341718062318066Ba)                                               |
+| Scroll       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://blockscout.scroll.io/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
 | Base       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://basescan.org/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
 | Arbitrum One       | [0x63d9C12865336322Ca981E5d1392acde4fAdD3Dc](https://arbiscan.io/address/0x63d9C12865336322Ca981E5d1392acde4fAdD3Dc)                                               |
 | Linea       | [0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d](https://lineascan.build/address/0x1b285Ffd0B19805947E7F285A922d2fFe5c4FE4d)                                               |
