@@ -49,7 +49,7 @@ To test the gas consumption fairly, we created a new tokens for different method
 
 ### Transfer ERC20/ETH to 1,000 addresses in Foundry
 
-Compared to Dipserse, BatchMoney saves ~80% on deployment and 2~3% on transfer ERC20/ETH to 1,000 addresses.
+Compared to Dipserse, BatchMoney saves 80% on deployment and 2~3% on transfer ERC20/ETH to 1,000 addresses.
 
 ![](./img/FoundryTest.png)
 
