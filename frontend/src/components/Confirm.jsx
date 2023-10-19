@@ -16,7 +16,7 @@ const Confirm = ({
 
   useEffect(() => {
     if (total && tokenBalance) {
-      setIsDisabled(!ethers.utils.parseUnits(tokenBalance).gt(total));
+      setIsDisabled(ethers.utils.parseUnits(tokenBalance).lt(total));
     }
   }, [total, tokenBalance]);
 
