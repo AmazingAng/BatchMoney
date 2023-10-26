@@ -3,9 +3,9 @@ import { supportedChains } from "./constants";
 
 export const isValidAddress = (address) => ethers.utils.isAddress(address);
 
-export const isValidValue = (value) => {
+export const isValidValue = (value, decimals) => {
   try {
-    return ethers.utils.parseUnits(value, "ether");
+    return ethers.utils.parseUnits(value, decimals);
   } catch (err) {
     return false;
   }
@@ -31,7 +31,7 @@ export const getWarnMessage = () => {
   return `*Supports ${networks}*`;
 };
 
-export const parseText = (textValue) => {
+export const parseText = (textValue, decimals = 18) => {
   const lines = textValue.split("\n");
   let updatedRecipients = [];
 
@@ -43,7 +43,7 @@ export const parseText = (textValue) => {
       line.includes("\t")
     ) {
       const [address, value] = line.split(/[,= \t]+/);
-      const validValue = isValidValue(value);
+      const validValue = isValidValue(value, decimals);
       if (isValidAddress(address) && validValue) {
         updatedRecipients.push({
           address,

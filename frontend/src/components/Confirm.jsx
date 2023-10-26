@@ -6,6 +6,7 @@ const Confirm = ({
   recipientsData,
   total,
   tokenBalance,
+  decimals,
   remaining,
   approve,
   batchTransfer,
@@ -16,7 +17,7 @@ const Confirm = ({
 
   useEffect(() => {
     if (total && tokenBalance) {
-      setIsDisabled(ethers.utils.parseUnits(tokenBalance).lt(total));
+      setIsDisabled(ethers.utils.parseUnits(tokenBalance, decimals).lt(total));
     }
   }, [total, tokenBalance]);
 
@@ -37,7 +38,7 @@ const Confirm = ({
                 <p>{recipient.address}</p>
                 {/* TODO: Add Horizontal line here */}
                 <div className="border-b-2 border-black flex-grow-1"></div>
-                <p>{ethers.utils.formatEther(recipient.value)}</p>
+                <p>{ethers.utils.formatUnits(recipient.value, decimals)}</p>
               </div>
             </li>
           ))}
@@ -45,7 +46,7 @@ const Confirm = ({
           <div className="flex justify-between mt-6">
             <p className="italic">total</p>
             <p className="italic">
-              {total ? ethers.utils.formatEther(total) : ""}
+              {total ? ethers.utils.formatUnits(total, decimals) : ""}
             </p>
           </div>
         </li>

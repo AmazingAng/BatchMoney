@@ -13,6 +13,7 @@ const Payment = ({ address }) => {
     name: null,
     symbol: null,
     balance: null,
+    decimals: null,
   };
   const { chainId } = useContext(NetworkContext);
   const [currentLink, setCurrentLink] = useState(null);
@@ -53,10 +54,13 @@ const Payment = ({ address }) => {
         const name = await erc20.name();
         const symbol = await erc20.symbol();
         const balance = await erc20.balanceOf(address);
+        const decimals = await erc20.decimals();
+
         setTokenDetails({
           name,
           symbol,
-          balance: ethers.utils.formatEther(balance),
+          balance: ethers.utils.formatUnits(balance, decimals),
+          decimals: decimals,
         });
       }
 
@@ -150,8 +154,15 @@ const Payment = ({ address }) => {
 
   useEffect(() => {
     if (textValue !== "") {
-      const updatedRecipients = parseText(textValue);
-      setRecipientsData(updatedRecipients);
+      if(tokenDetails.balance){
+        // erc20
+        const updatedRecipients = parseText(textValue, tokenDetails.decimals);
+        setRecipientsData(updatedRecipients);
+      }else{
+        // ether
+        const updatedRecipients = parseText(textValue);
+        setRecipientsData(updatedRecipients);
+      }
     }
   }, [textValue]);
 
@@ -169,9 +180,9 @@ const Payment = ({ address }) => {
 
   useEffect(() => {
     if (tokenDetails.balance && total) {
-      const tokenBalance = ethers.utils.parseEther(tokenDetails.balance);
+      const tokenBalance = ethers.utils.parseUnits(tokenDetails.balance, tokenDetails.decimals);
       const remaining = tokenBalance.sub(total);
-      setRemaining(ethers.utils.formatEther(remaining));
+      setRemaining(ethers.utils.formatUnits(remaining, tokenDetails.decimals));
     } else {
       setRemaining(null);
     }
@@ -260,6 +271,7 @@ const Payment = ({ address }) => {
                   recipientsData={recipientsData}
                   total={total}
                   tokenBalance={tokenDetails.balance}
+                  decimals={tokenDetails.decimals}
                   remaining={remaining}
                   approve={approve}
                   batchTransfer={batchTransfer}
